@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TrustVault private document sharing and audit trail">
+  <title>TrustVault — Secure Document Workspace</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"> <span class="brand-mark">T</span> TrustVault</a><div class="top-actions"><span id="whoami" class="muted">Not signed in</span><button id="logoutBtn" class="btn btn-ghost hidden">Sign out</button></div></header>
+<main class="shell">
+  <section id="authView" class="auth-layout">
+    <div class="hero"><p class="eyebrow">PRIVATE BY DESIGN</p><h1>Your documents.<br><span>Your control.</span></h1><p class="hero-copy">Keep files private, share only with people you choose, and review a verifiable record of access events.</p><div class="feature-row"><div class="feature-icon">⌁</div><div><b>Permission-based sharing</b><p>Grant READ or EDIT access. Revoke it when you need to.</p></div></div><div class="feature-row"><div class="feature-icon">◷</div><div><b>Audit trail</b><p>Record key actions and check the hash-chain integrity.</p></div></div></div>
+    <div class="panel auth-panel"><div class="tabs"><button class="tab active" data-tab="login">Sign in</button><button class="tab" data-tab="register">Create account</button></div>
+      <form id="loginForm" class="form"><h2>Welcome back</h2><p class="muted">Sign in to your secure workspace.</p><label>Username<input name="username" required minlength="3" autocomplete="username"></label><label>Password<input name="password" type="password" required autocomplete="current-password"></label><button class="btn btn-primary full" type="submit">Sign in <span>→</span></button></form>
+      <form id="registerForm" class="form hidden"><h2>Create your account</h2><p class="muted">New accounts start with viewer access.</p><label>Username<input name="username" required minlength="3" maxlength="50" autocomplete="username"></label><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password"></label><button class="btn btn-primary full" type="submit">Create account <span>→</span></button></form>
+      <p id="authMessage" class="message" role="status"></p><p class="fineprint">Use a unique password. This demo does not provide password recovery.</p>
+    </div>
+  </section>
+  <section id="appView" class="hidden">
+    <div class="welcome-row"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Documents <span class="dot">.</span></h1><p class="muted">Manage your files and shared access from one place.</p></div><button id="refreshBtn" class="btn btn-ghost">↻ Refresh</button></div>
+    <div class="stats"><article class="stat-card"><span class="stat-icon">▤</span><div><span class="stat-label">Visible documents</span><strong id="docCount">0</strong></div></article><article class="stat-card"><span class="stat-icon">♙</span><div><span class="stat-label">Signed in as</span><strong id="roleLabel">Viewer</strong></div></article><article class="stat-card"><span class="stat-icon">◉</span><div><span class="stat-label">Security</span><strong>Private storage</strong></div></article></div>
+    <div class="content-grid"><section class="panel"><div class="panel-heading"><div><h2>Upload a document</h2><p class="muted">PDF, TXT, PNG or JPG · up to 5 MB</p></div><span class="pill">Private</span></div><form id="uploadForm" class="upload-form"><label class="dropzone" for="fileInput"><span class="upload-icon">↑</span><b>Choose a file to upload</b><span class="muted">Select from your device</span><input id="fileInput" name="file" type="file" accept=".pdf,.txt,.png,.jpg,.jpeg" required></label><label>Category<input name="category" maxlength="100" value="uncategorized" required></label><button class="btn btn-primary full" type="submit">Upload securely</button></form><p id="uploadMessage" class="message" role="status"></p></section>
+    <section class="panel document-panel"><div class="panel-heading"><div><h2>Your documents</h2><p class="muted">Owned and shared with you</p></div><span id="visibleCount" class="count-badge">0 files</span></div><div class="filters"><input id="searchInput" placeholder="Search filename…" aria-label="Search filename"><input id="categoryFilter" placeholder="Filter category…" aria-label="Filter category"><button id="searchBtn" class="btn btn-ghost">Search</button></div><div id="documentList" class="document-list"><div class="empty-state">Sign in to see documents.</div></div><p id="listMessage" class="message" role="status"></p></section></div>
+    <section class="panel audit-panel" id="adminPanel"><div class="panel-heading"><div><h2>Admin security console</h2><p class="muted">Audit events and integrity verification</p></div><span class="pill pill-dark">ADMIN ONLY</span></div><div class="admin-actions"><button id="loadAuditBtn" class="btn btn-ghost">Load audit events</button><button id="verifyAuditBtn" class="btn btn-primary">Verify hash chain</button></div><p id="auditMessage" class="message" role="status"></p><div id="auditResults"></div></section>
+    <footer>TrustVault · Secure document sharing with an auditable access trail <a href="/docs" target="_blank" rel="noreferrer">API docs ↗</a></footer>
+  </section>
+</main><div id="toast" class="toast" role="status"></div><script src="/static/app.js" defer></script>
+</body></html>

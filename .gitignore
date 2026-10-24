@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local databases and uploaded files
+*.db
+storage/
+uploads/
+
+# Test and coverage output
+.coverage
+htmlcov/
+
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local PostgreSQL backup
+pg_hba.conf.backup
